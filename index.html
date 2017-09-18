@@ -32,6 +32,12 @@
 					<p>
 						<small>Created by <a href="https://www.linkedin.com/in/brandon-at-dal/">Brandon Poole</a></small>
 					</p>
+
+					<aside class="notes">
+						- Whether Concourse integration is better than Jenkins for Java/Maven test, build, deploy
+						- Overview of my Summer co-op.
+						- Focusing on the tools and decisions.
+					</aside>
 				</section>
 				<section>
 					<section>
@@ -42,27 +48,159 @@
 						<blockquote cite="https://www.thoughtworks.com/continuous-integration">
 						&ldquo;Continuous Integration (CI) is a development practice that requires developers to integrate code into a shared repository several times a day. Each check-in is then verified by an automated build, allowing teams to detect problems early. &rdquo;
 					</blockquote>
+
+					<aside class="notes">
+						- Explain in basic language what it is and why my group needs it. Explain why smaller groups might not need it.
+					</aside>
+					</section>
+					<section>
+						<h3>What does that mean for developers? Is it needed for everyone?</h3>
+						<aside class="notes">
+							- Small groups vs large groups
+							- But basically if you have unit tests it's good
+						</aside>
+					</section>
+					<section>
+						<section><h3>The Current Implementation</h3></section>
+						<section cite="https://www.martinfowler.com/articles/continuousIntegration.html">
+							<div style="width: 48%; float: left">
+								<ul>
+									<li class="fragment" style="color: #00FF00">Maintain a code repository</li>
+									<li class="fragment" style="color: #FFFF00">Automate the build</li>
+									<li class="fragment" style="color: #FFFF00">Make the build self-testing</li>
+									<li class="fragment" style="color: #00FF00">Everyone commits to the baseline every day</li>
+									<li class="fragment" style="color: #FFFF00">Everyone can see the results of the latest build</li>
+								</ul>
+							</div>
+							<div style="width: 48%; float: right">
+								<ul>
+									<li class="fragment" style="color: #00FF00">Keep the build fast</li>
+									<li class="fragment" style="color: #FF0000">Test in a clone of the production environment</li>
+									<li class="fragment" style="color: #00FF00">Make it easy to get the latest deliverables</li>
+									<li class="fragment" style="color: #FF0000">Automate deployment</li>
+									<li class="fragment" style="color: #FF0000">Every commit (to baseline) should be built</li>
+								</ul>
+							</div>
+							<aside class="notes">
+							Martin Fowler - Continuous integration. List of 10
+							</aside>
+						</section>
 					</section>
 				</section>
 				<section>
 					<section>
 						<h3>Jenkins</h3>
 						<img src="/css/img/Jenkins.png" alt="Jenkins Logo">
+						<aside class="notes">
+							Explain that Jenkins is/was the current CI tool my group used.
+						</aside>
 					</section>
-				</section>
-				<section>
+					<section data-background-image="/css/img/JenkinsWebsite.jpg">
+						<aside class="notes">
+							Explain the setup process for Jenkins. Explain how it generally functions for automatic building. Explain scripting for every single pipeline action.
+						</aside>
+					</section>
 					<section>
-						<h3>Alternatives</h3>
+						<h3>Back to the Problems</h3>
+						<ul>
+							<li style="color: #FFFF00">Automate the build</li>
+							<li style="color: #FFFF00">Make the build self-testing</li>
+							<li style="color: #FFFF00">Everyone can see the results of the latest build</li>
+							<li style="color: #FF0000">Test in a clone of the production environment</li>
+							<li style="color: #FF0000">Automate deployment</li>
+					</section>
+					<section>
+						<blockquote>
+						&ldquo;It's an organic creation. &rdquo;
+						</blockquote>
+
+						<ul>
+							<li class="fragment">Jenkins user has configuration in the envrionment.</li>
+							<li class="fragment">Use of VMs created by hand.</li>
+							<li class="fragment">Over 40 scripts for pulling, pushing, and environment fixes.</li>
+							<aside class="notes">
+								- Problems with the original implementation
+								- If the environment crashed, a dev would have to manually go through the xml backup and recreate the user based on the failures.
+								- If something goes wrong, the state is still saved. Containerization fixes this.
+								- Scripts make assumptions. They're messy.
+								- Jenkins has a much broader use. Concourse is perfect for the project the team has implemented.
+							</aside>
 					</section>
 				</section>
 				<section>
 					<section>
 						<h3>Concourse.ci</h3>
 					</section>
+					<section>
+						<h3>Why Concourse?</h3>
+						<div style="width: 48%; float: left">
+							<ul>
+								<li class="fragment">More native features</li>
+								<ul class="fragment">
+									<li>Docker support</li>
+									<li>Cloud Foundry designed</li>
+								</ul>
+								<li class="fragment">A plethora of third party plugins</li>
+							</ul>
+						</div>
+						<div style="width: 48%; float: right" >
+							<img src="/css/img/concourseFeatures.jpg" alt="Concourse features">
+						</div>
+					</section>
+					<section data-background-iframe="http://dinar.cs.dal.ca:8080" data-background-interactive></section>
+				</section>
+				<section>
+					<section>
+						<h3>Jenkins to Concourse</h3>
+					</section>
+					<section>
+						<h3>Containerization</h3>
+						<img src="/css/img/containersDocker2.png" alt="Docker containers" cite="https://www.docker.com/what-container">
+					</section>
+					<section>
+						<h3>Version Control</h3>
+						<p>Jenkins XML vs Concourse YML</p>
+					</section>
+					<section>
+						<h3>Cloud Foundry</h3>
+						<p>Just need to deploy</p>
+					</section>
+					<section>
+						<h3>Cloud Foundry</h3>
+						<p>Just need to deploy</p>
+					</section>
+					<section>
+						<h3>Where we went</h3>
+						<div style="width: 48%; float: left">
+							<ul>
+								<li style="color: #00FF00">Maintain a code repository</li>
+								<li style="color: #00FF00">Automate the build</li>
+								<li style="color: #FFFF00">Make the build self-testing</li>
+								<li style="color: #00FF00">Everyone commits to the baseline every day</li>
+								<li style="color: #00FF00">Everyone can see the results of the latest build</li>
+							</ul>
+						</div>
+						<div style="width: 48%; float: right">
+							<ul>
+								<li style="color: #FFFF00">Keep the build fast</li>
+								<li style="color: #FF0000">Test in a clone of the production environment</li>
+								<li style="color: #00FF00">Make it easy to get the latest deliverables</li>
+								<li style="color: #FFFF00">Automate deployment</li>
+								<li style="color: #00FF00">Every commit (to baseline) should be built</li>
+							</ul>
+						</div>
+					</section>
+					<section>
+						<h3>Best of all</h3>
+						<ul>
+							<li>40+ scripts now down to 2</li>
+						</ul>
+					</section>
 				</section>
 				<section>
 					<section>
 						<h3>Continued Development</h3>
+
 					</section>
 				</section>
 			</div>
