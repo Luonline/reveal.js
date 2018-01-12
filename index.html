@@ -78,11 +78,12 @@
 									<li class="fragment" style="color: #FF0000">Test in a clone of the production environment</li>
 									<li class="fragment" style="color: #00FF00">Make it easy to get the latest deliverables</li>
 									<li class="fragment" style="color: #FF0000">Automate deployment</li>
-									<li class="fragment" style="color: #FF0000">Every commit (to baseline) should be built</li>
+									<li class="fragment" style="color: #00FF00">Every commit (to baseline) should be built</li>
 								</ul>
 							</div>
 							<aside class="notes">
 							Martin Fowler - Continuous integration. List of 10
+							automate the build: Anyone could add a job and no one maintained them. 40 scripts.
 							</aside>
 						</section>
 					</section>
@@ -115,7 +116,7 @@
 						</blockquote>
 
 						<ul>
-							<li class="fragment">Jenkins user has configuration in the envrionment.</li>
+							<li class="fragment">Jenkins user has configuration in the environment.</li>
 							<li class="fragment">Use of VMs created by hand.</li>
 							<li class="fragment">Over 40 scripts for pulling, pushing, and environment fixes.</li>
 							<aside class="notes">
@@ -139,6 +140,7 @@
 								<ul class="fragment">
 									<li>Docker support</li>
 									<li>Cloud Foundry designed</li>
+									<li>JMeter Performance Regression Testing</li>
 								</ul>
 								<li class="fragment">A plethora of third party plugins</li>
 							</ul>
@@ -146,6 +148,9 @@
 						<div style="width: 48%; float: right" >
 							<img src="/css/img/concourseFeatures.jpg" alt="Concourse features">
 						</div>
+						<aside class="notes">
+							- Performance testing because when it runs in dev it might be fine, but when more users in prod it might not be.
+						</aside>
 					</section>
 					<section data-background-iframe="http://dinar.cs.dal.ca:8080" data-background-interactive></section>
 				</section>
@@ -160,10 +165,6 @@
 					<section>
 						<h3>Version Control</h3>
 						<p>Jenkins XML vs Concourse YML</p>
-					</section>
-					<section>
-						<h3>Cloud Foundry</h3>
-						<p>Just need to deploy</p>
 					</section>
 					<section>
 						<h3>Cloud Foundry</h3>
@@ -201,6 +202,26 @@
 					<section>
 						<h3>Continued Development</h3>
 
+					</section>
+					<section>
+						<h3>Problems with Concourse</h3>
+						<ul>
+							<li>Virtual infrastructure</li>
+							<li>Implementation of m2 cache</li>
+							<li>Not as fast as Jenkins</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Suggestion for the Future</h3>
+						<ul>
+							<li>Partnering teams should be given a working infrastructure to test</li>
+						</ul>
+					</section>
+
+				</section>
+				<section>
+					<section>
+						<h3>Questions?</h3>
 					</section>
 				</section>
 			</div>
